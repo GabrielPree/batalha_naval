@@ -3,7 +3,14 @@
 int main() {
 
     int tabuleiro[10][10] = {0}; //Inicializa o tabuleiro com 0 sinalizando água
-    int coluna[10];
+
+
+    // Adiciona o navio de tamanho 3 na posição desejada (linha 2, coluna E)
+    int linha = 1;   // Linha 2 (índice 1)
+    int colunaInicial = 4;  // Coluna E (índice 4)
+    for (int i = 0; i < 3; i++) {
+         tabuleiro[linha][colunaInicial + i] = 3;
+    }
 
     printf("Bem-vindo ao jogo Batalha Naval!\n");
     printf("\n   ");
