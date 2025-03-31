@@ -17,6 +17,18 @@ int main() {
     for (int i = 0; i < 3; i++) {
          tabuleiro[linha2 + i][coluna] = 3;
     }
+    // Adiciona o navio de tamanho 3 na posição desejada na diagonal para direita (linha 7, coluna E)
+    int linha3 = 6;   // Linha 7 (índice 6)
+    int coluna3 = 4;  // Coluna E (índice 4)
+    for (int i = 0; i < 3; i++) {
+            tabuleiro[linha3 + i][coluna3 + i] = 3;
+    }
+    // Adiciona o navio de tamanho 3 na posição desejada na diagonal para esquerda (linha 3, coluna I)
+    int linha4 = 2;   // Linha 3 (índice 2)
+    int coluna4 = 8;  // Coluna I (índice 8)
+    for (int i = 0; i < 3; i++) {
+            tabuleiro[linha4 + i][coluna4 - i] = 3;
+    }
 
     printf("Bem-vindo ao jogo Batalha Naval!\n");
     printf("\n   ");
