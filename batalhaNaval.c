@@ -133,6 +133,25 @@ void poderCone(int tabuleiro[LINHAS][COLUNAS]) {
     }
 }
 
+// função para adicionar o poder cruz ao tabuleiro
+void poderCruz(int tabuleiro[LINHAS][COLUNAS]) {
+    int x = 4, y = 6; // Coordenadas iniciais do poder cruz
+    // Horizontal - 5 casas no total (2 para cada lado e a central)
+    for (int j = -2; j <= 2; j++) { // j -2 a 2 para cobrir 5 casas pois 2 para cada lado e a central
+        int ny = y + j; // Coordenada da coluna
+        if (ny >= 0 && ny < COLUNAS) { // Verifica se está dentro dos limites
+            tabuleiro[x][ny] = 5; // Marca a posição na linha central
+        }
+    }
+    // Vertical - 3 casas no total (1 para cima e 1 para baixo)
+    for (int i = -1; i <= 1; i++) { // i -1 a 1 para cobrir 3 casas pois 1 para cima e 1 para baixo
+        int nx = x + i; // Coordenada da linha
+        if (nx >= 0 && nx < LINHAS) { // Verifica se está dentro dos limites
+            tabuleiro[nx][y] = 5; // Marca a posição na coluna central
+        }
+    }
+}
+
 // Função principal
 int main() {
 
@@ -152,6 +171,7 @@ int main() {
     }
     printf("\nTabuleiro após adicionar os Poderes:\n");
     poderCone(tabuleiro); // Chama a função para adicionar o poder cone
+    poderCruz(tabuleiro); // Chama a função para adicionar o poder cruz
     exibirTabuleiro(tabuleiro); // Exibe o tabuleiro após adicionar os 
 
 
