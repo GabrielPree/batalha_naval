@@ -152,6 +152,25 @@ void poderCruz(int tabuleiro[LINHAS][COLUNAS]) {
     }
 }
 
+// função para adicionar o poder octaedro ao tabuleiro
+void poderOctaedro(int tabuleiro[LINHAS][COLUNAS]) {
+    int x = 7, y = 2; // Coordenadas iniciais do poder cruz
+    // Horizontal - 3 casas no total (1 para cada lado e a central)
+    for (int j = -1; j <= 1; j++) { // j -1 a 1 para cobrir 3 casas pois 1 para cada lado e a central
+        int ny = y + j; // Coordenada da coluna
+        if (ny >= 0 && ny < COLUNAS) { // Verifica se está dentro dos limites
+            tabuleiro[x][ny] = 5; // Marca a posição na linha central
+        }
+    }
+    // Vertical - 3 casas no total (1 para cima e 1 para baixo)
+    for (int i = -1; i <= 1; i++) { // i -1 a 1 para cobrir 3 casas pois 1 para cima e 1 para baixo
+        int nx = x + i; // Coordenada da linha
+        if (nx >= 0 && nx < LINHAS) { // Verifica se está dentro dos limites
+            tabuleiro[nx][y] = 5; // Marca a posição na coluna central
+        }
+    }
+}
+
 // Função principal
 int main() {
 
@@ -172,6 +191,7 @@ int main() {
     printf("\nTabuleiro após adicionar os Poderes:\n");
     poderCone(tabuleiro); // Chama a função para adicionar o poder cone
     poderCruz(tabuleiro); // Chama a função para adicionar o poder cruz
+    poderOctaedro(tabuleiro); // Chama a função para adicionar o poder octaedro
     exibirTabuleiro(tabuleiro); // Exibe o tabuleiro após adicionar os 
 
 
