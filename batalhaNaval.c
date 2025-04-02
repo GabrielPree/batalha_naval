@@ -4,6 +4,7 @@
 #define COLUNAS 10
 #define TAMANHO_NAVIO 3
 
+// Função para exibir o tabuleiro
 void exibirTabuleiro(int tabuleiro[LINHAS][COLUNAS]) {
     // Exibe o tabuleiro com os números das linhas e letras das colunas
     printf("   ");// Espaço para o cabeçalho das colunas
@@ -20,6 +21,7 @@ void exibirTabuleiro(int tabuleiro[LINHAS][COLUNAS]) {
     }
 }
 
+// Função para verificar se a posição do navio é válida
 int verificarPosicao(int tabuleiro[LINHAS][COLUNAS], int linha, int coluna, char orientacao) {
     for (int i = 0; i < TAMANHO_NAVIO; i++) { // Loop para verificar a posição do navio
         // Inicializa as coordenadas x e y com a linha e coluna fornecidas na função adicionarNavio
@@ -52,6 +54,7 @@ int verificarPosicao(int tabuleiro[LINHAS][COLUNAS], int linha, int coluna, char
     }
     return 1;
 }
+
 //função para adicionar navio ao tabuleiro
 void adicionarNavio(int tabuleiro[LINHAS][COLUNAS]) {
     /*
@@ -115,6 +118,22 @@ void adicionarNavio(int tabuleiro[LINHAS][COLUNAS]) {
     printf("Navio adicionado com sucesso!\n"); // Exibe mensagem de sucesso ao adicionar o navio
 }
 
+// função para adicionar o poder cone ao tabuleiro
+void poderCone(int tabuleiro[LINHAS][COLUNAS]) {
+    int x = 0, y = 3; // Coordenadas iniciais do poder cone
+    for (int i = 0; i < 3; i++) {
+        for (int j = -i; j <= i; j++) {  // O loop interno vai de -i até +i para formar o cone
+            int nx = x + i;    // Coordenada da linha
+            int ny = y + j;    // Coordenada da coluna
+            // Verifica se as coordenadas estão dentro dos limites do tabuleiro
+            if (nx >= 0 && nx < LINHAS && ny >= 0 && ny < COLUNAS) {
+                tabuleiro[nx][ny] = 5;  // Marca a posição do poder cone no tabuleiro com o número 5
+            }
+        }
+    }
+}
+
+// Função principal
 int main() {
 
     // Inicializa o tabuleiro com água (0)
@@ -131,6 +150,10 @@ int main() {
         adicionarNavio(tabuleiro);// Chama a função para adicionar o navio
         exibirTabuleiro(tabuleiro);// Exibe o tabuleiro após adicionar o navio+
     }
+    printf("\nTabuleiro após adicionar os Poderes:\n");
+    poderCone(tabuleiro); // Chama a função para adicionar o poder cone
+    exibirTabuleiro(tabuleiro); // Exibe o tabuleiro após adicionar os 
+
 
     return 0;
 }
